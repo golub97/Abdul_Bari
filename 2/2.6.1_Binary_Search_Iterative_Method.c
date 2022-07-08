@@ -8,7 +8,9 @@ int BinSearch(int* array, int length, int key)
     
     while(l <= r)
     {
-        midd = (r+l)/2;
+        midd = (r+l)/2; //alternative and better way int mid = low + (high – low)/2;
+                        //current implementation fails if the sum of low and high is greater than the maximum positive int value(231 – 1 ).
+                        //The sum overflows to a negative value and the value stays negative when divided by 2. 
         
         if(key == array[midd])
             return array[midd];
