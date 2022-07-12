@@ -9,8 +9,8 @@ using namespace std;
 void heapify(int arr[], int n, int i)
 {
     
-  // Initialize largest as root
-    int largest = i; 
+  // Initialize smallest as root
+    int smallest = i; 
     
   // left = 2*i + 1
     int l = 2 * i + 1; 
@@ -18,22 +18,22 @@ void heapify(int arr[], int n, int i)
   // right = 2*i + 2
     int r = 2 * i + 2; 
   
-    // If left child is larger than root
-    if (l < n && arr[l] > arr[largest])
-        largest = l;
+    // If left child is less  than root
+    if (l < n && arr[l] < arr[smallest])
+        smallest = l;
   
-    // If right child is larger than largest 
+    // If right child is less than smallest 
     // so far
-    if (r < n && arr[r] > arr[largest])
-        largest = r;
+    if (r < n && arr[r] < arr[smallest])
+        smallest = r;
   
-    // If largest is not root
-    if (largest != i) {
-        swap(arr[i], arr[largest]);
+    // If smallest is not root
+    if (smallest != i) {
+        swap(arr[i], arr[smallest]);
   
         // Recursively heapify the affected 
         // sub-tree
-        heapify(arr, n, largest);
+        heapify(arr, n, smallest);
     }
 }
   
